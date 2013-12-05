@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSArray *letterMatrix;
 @property (strong, nonatomic) NSMutableString *formedWord;
 
+@property (strong, nonatomic) NSArray *adjacencies;
+
 @end
 
 @implementation ILBoardViewController
@@ -61,10 +63,15 @@
     
     ILLetterCell *cell = (ILLetterCell *)[self.collectionView cellForItemAtIndexPath:self.indexPathForLastCellTouched];
     
-    cell.backgroundColor = [UIColor redColor];
-    
     [self.formedWord appendString:cell.letterLabel.text];
     [self.wordFormationPath addObject:@(self.indexPathForLastCellTouched.row)];
+    
+    if (![self isValidPath:self.wordFormationPath]) {
+        [self touchEnded];
+        return;
+    }
+    
+    [self colorPath:self.wordFormationPath];
 }
 
 -(void)touchEnded
@@ -75,6 +82,34 @@
     self.wordFormationPath = nil;
 }
 
+-(BOOL)isValidPath:(NSArray *)path
+{
+    NSNumber *previousPosition = path[0];
+    for (int i = 1; i < path.count; i++) {
+        NSNumber *currentPosition = path[i];
+        NSArray *adjacenciesForPreviousLetter = self.adjacencies[[previousPosition integerValue]];
+        
+        if (![adjacenciesForPreviousLetter containsObject:currentPosition]) return NO;
+        previousPosition = currentPosition;
+    }
+    return YES;
+}
+
+-(void)colorPath:(NSArray *)path
+{
+    for (int i = 0; i < path.count - 1; i++) {
+        NSNumber *item = path[i];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[item integerValue] inSection:0];
+        ILLetterCell *cell = (ILLetterCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        
+        cell.backgroundColor = [UIColor grayColor];
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[path.lastObject integerValue] inSection:0];
+    ILLetterCell *cell = (ILLetterCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor redColor];
+    
+}
 
 #pragma mark - Collection View Flow Layout generator
 
@@ -125,6 +160,33 @@
 {
     if (_formedWord == nil) _formedWord = [NSMutableString string];
     return _formedWord;
+}
+
+-(NSArray *)adjacencies
+{
+    if (_adjacencies == nil)
+    {
+        _adjacencies = @[
+                         @[@1,@4,@5],
+                         @[@0,@2,@4,@5,@6],
+                         @[@1,@3,@5,@6,@7],
+                         @[@2,@6,@7],
+                         @[@0,@1,@5,@8,@9],
+                         @[@0,@1,@2,@4,@6,@8,@9,@10],
+                         @[@1,@2,@3,@5,@7,@9,@10,@11],
+                         @[@2,@3,@6,@10,@11],
+                         @[@4,@5,@9,@12,@13],
+                         @[@4,@5,@6,@8,@10,@12,@13,@14],
+                         @[@5,@6,@7,@9,@11,@13,@14,@15],
+                         @[@6,@7,@10,@14,@15],
+                         @[@8,@9,@13],
+                         @[@8,@9,@10,@12,@14],
+                         @[@9,@10,@11,@13,@15],
+                         @[@10,@11,@14]
+        ];
+    }
+    
+    return _adjacencies;
 }
 
 @end
