@@ -20,13 +20,16 @@
 		3ACA4F51185022C600258EF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F39185022C600258EF1 /* UIKit.framework */; };
 		3ACA4F59185022C600258EF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F57185022C600258EF1 /* InfoPlist.strings */; };
 		3ACA4F5B185022C600258EF1 /* WordplayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F5A185022C600258EF1 /* WordplayTests.m */; };
-		3ACA4F671850232800258EF1 /* ILGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F651850232800258EF1 /* ILGameViewController.m */; };
-		3ACA4F681850232800258EF1 /* ILGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F661850232800258EF1 /* ILGameViewController.xib */; };
 		3ACA4F6A185025C700258EF1 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F69185025C700258EF1 /* libicucore.dylib */; };
 		3ACA4F6C185025D200258EF1 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F6B185025D200258EF1 /* libc++.dylib */; };
 		3ACA4F6E185025E000258EF1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F6D185025E000258EF1 /* CFNetwork.framework */; };
 		3ACA4F70185025E600258EF1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F6F185025E600258EF1 /* Security.framework */; };
 		3ACA4F72185025EF00258EF1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F71185025EF00258EF1 /* SystemConfiguration.framework */; };
+		3ACA4F881850568700258EF1 /* ILBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F841850568700258EF1 /* ILBoardViewController.m */; };
+		3ACA4F891850568700258EF1 /* ILGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F861850568700258EF1 /* ILGameViewController.m */; };
+		3ACA4F8A1850568700258EF1 /* ILGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F871850568700258EF1 /* ILGameViewController.xib */; };
+		3ACA4F8D1850568F00258EF1 /* ILLetterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F8C1850568F00258EF1 /* ILLetterCell.m */; };
+		3ACA4F8F185056A100258EF1 /* ILLetterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F8E185056A100258EF1 /* ILLetterCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,14 +59,19 @@
 		3ACA4F56185022C600258EF1 /* WordplayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WordplayTests-Info.plist"; sourceTree = "<group>"; };
 		3ACA4F58185022C600258EF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3ACA4F5A185022C600258EF1 /* WordplayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordplayTests.m; sourceTree = "<group>"; };
-		3ACA4F641850232800258EF1 /* ILGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILGameViewController.h; sourceTree = "<group>"; };
-		3ACA4F651850232800258EF1 /* ILGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILGameViewController.m; sourceTree = "<group>"; };
-		3ACA4F661850232800258EF1 /* ILGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ILGameViewController.xib; sourceTree = "<group>"; };
 		3ACA4F69185025C700258EF1 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		3ACA4F6B185025D200258EF1 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		3ACA4F6D185025E000258EF1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3ACA4F6F185025E600258EF1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3ACA4F71185025EF00258EF1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3ACA4F831850568700258EF1 /* ILBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILBoardViewController.h; sourceTree = "<group>"; };
+		3ACA4F841850568700258EF1 /* ILBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILBoardViewController.m; sourceTree = "<group>"; };
+		3ACA4F851850568700258EF1 /* ILGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILGameViewController.h; sourceTree = "<group>"; };
+		3ACA4F861850568700258EF1 /* ILGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILGameViewController.m; sourceTree = "<group>"; };
+		3ACA4F871850568700258EF1 /* ILGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ILGameViewController.xib; sourceTree = "<group>"; };
+		3ACA4F8B1850568F00258EF1 /* ILLetterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILLetterCell.h; sourceTree = "<group>"; };
+		3ACA4F8C1850568F00258EF1 /* ILLetterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILLetterCell.m; sourceTree = "<group>"; };
+		3ACA4F8E185056A100258EF1 /* ILLetterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ILLetterCell.xib; sourceTree = "<group>"; };
 		B21F6C9FDC02451BAD35B774 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBBF9BA3735841B084F977FA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,13 +146,12 @@
 		3ACA4F3B185022C600258EF1 /* Wordplay */ = {
 			isa = PBXGroup;
 			children = (
+				3ACA4F771850563300258EF1 /* Views */,
+				3ACA4F731850493B00258EF1 /* Controllers */,
 				3ACA4F44185022C600258EF1 /* ILAppDelegate.h */,
 				3ACA4F45185022C600258EF1 /* ILAppDelegate.m */,
 				3ACA4F47185022C600258EF1 /* Images.xcassets */,
 				3ACA4F3C185022C600258EF1 /* Supporting Files */,
-				3ACA4F641850232800258EF1 /* ILGameViewController.h */,
-				3ACA4F651850232800258EF1 /* ILGameViewController.m */,
-				3ACA4F661850232800258EF1 /* ILGameViewController.xib */,
 			);
 			path = Wordplay;
 			sourceTree = "<group>";
@@ -176,6 +183,28 @@
 				3ACA4F57185022C600258EF1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3ACA4F731850493B00258EF1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3ACA4F831850568700258EF1 /* ILBoardViewController.h */,
+				3ACA4F841850568700258EF1 /* ILBoardViewController.m */,
+				3ACA4F851850568700258EF1 /* ILGameViewController.h */,
+				3ACA4F861850568700258EF1 /* ILGameViewController.m */,
+				3ACA4F871850568700258EF1 /* ILGameViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3ACA4F771850563300258EF1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3ACA4F8B1850568F00258EF1 /* ILLetterCell.h */,
+				3ACA4F8C1850568F00258EF1 /* ILLetterCell.m */,
+				3ACA4F8E185056A100258EF1 /* ILLetterCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +287,8 @@
 			files = (
 				3ACA4F40185022C600258EF1 /* InfoPlist.strings in Resources */,
 				3ACA4F48185022C600258EF1 /* Images.xcassets in Resources */,
-				3ACA4F681850232800258EF1 /* ILGameViewController.xib in Resources */,
+				3ACA4F8F185056A100258EF1 /* ILLetterCell.xib in Resources */,
+				3ACA4F8A1850568700258EF1 /* ILGameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,9 +340,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ACA4F671850232800258EF1 /* ILGameViewController.m in Sources */,
 				3ACA4F42185022C600258EF1 /* main.m in Sources */,
 				3ACA4F46185022C600258EF1 /* ILAppDelegate.m in Sources */,
+				3ACA4F8D1850568F00258EF1 /* ILLetterCell.m in Sources */,
+				3ACA4F881850568700258EF1 /* ILBoardViewController.m in Sources */,
+				3ACA4F891850568700258EF1 /* ILGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
