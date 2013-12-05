@@ -13,8 +13,10 @@
 
 @interface ILBoardViewController ()
 
+@property (strong, nonatomic) NSMutableArray *wordFormationIndexPaths;
 @property (strong, nonatomic) NSIndexPath *indexPathForLastCellTouched;
 @property (strong, nonatomic) NSArray *letterMatrix;
+@property (strong, nonatomic) NSMutableString *formedWord;
 
 @end
 
@@ -45,19 +47,30 @@
 -(void)touchedAtPoint:(CGPoint)point
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
-    if ([indexPath isEqual:self.indexPathForLastCellTouched]) {
+    // do nothing if index path is the same as last cell touched or index path is nil
+    if ([indexPath isEqual:self.indexPathForLastCellTouched] ||
+        indexPath == nil ||
+        [self.wordFormationIndexPaths containsObject:indexPath])
+    {
         return;
     }
     
     self.indexPathForLastCellTouched = indexPath;
     
-    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:self.indexPathForLastCellTouched];
+    ILLetterCell *cell = (ILLetterCell *)[self.collectionView cellForItemAtIndexPath:self.indexPathForLastCellTouched];
+    
     cell.backgroundColor = [UIColor redColor];
+    
+    [self.formedWord appendString:cell.letterLabel.text];
+    [self.wordFormationIndexPaths addObject:self.indexPathForLastCellTouched];
 }
 
 -(void)touchEnded
 {
     [self.collectionView reloadData];
+    NSLog(@"%@", self.formedWord);
+    self.formedWord = nil;
+    self.wordFormationIndexPaths = nil;
 }
 
 
@@ -96,6 +109,20 @@
     cell.letterLabel.text = letter;
     
     return cell;
+}
+
+# pragma mark - Lazy load variables
+
+-(NSMutableArray *)wordFormationIndexPaths
+{
+    if (_wordFormationIndexPaths == nil) _wordFormationIndexPaths = [NSMutableArray array];
+    return _wordFormationIndexPaths;
+}
+
+-(NSMutableString *)formedWord
+{
+    if (_formedWord == nil) _formedWord = [NSMutableString string];
+    return _formedWord;
 }
 
 @end
