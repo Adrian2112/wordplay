@@ -7,6 +7,7 @@
 //
 
 #import "ILAppDelegate.h"
+#import "ILGameViewController.h"
 
 @implementation ILAppDelegate
 
@@ -16,6 +17,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    ILGameViewController *gameVC = [[ILGameViewController alloc] init];
+    self.window.rootViewController = gameVC;
+    
     return YES;
 }
 
