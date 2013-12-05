@@ -13,7 +13,7 @@
 
 @interface ILBoardViewController ()
 
-@property (strong, nonatomic) NSMutableArray *wordFormationIndexPaths;
+@property (strong, nonatomic) NSMutableArray *wordFormationPath;
 @property (strong, nonatomic) NSIndexPath *indexPathForLastCellTouched;
 @property (strong, nonatomic) NSArray *letterMatrix;
 @property (strong, nonatomic) NSMutableString *formedWord;
@@ -47,10 +47,12 @@
 -(void)touchedAtPoint:(CGPoint)point
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
-    // do nothing if index path is the same as last cell touched or index path is nil
-    if ([indexPath isEqual:self.indexPathForLastCellTouched] ||
-        indexPath == nil ||
-        [self.wordFormationIndexPaths containsObject:indexPath])
+    // do nothing if index path is the same as last cell touched
+    // or index path is nil
+    // or the wordFormationIndexPath already include the index path
+    if ([indexPath isEqual:self.indexPathForLastCellTouched]
+        || indexPath == nil
+        || [self.wordFormationPath containsObject:@(indexPath.row)])
     {
         return;
     }
@@ -62,7 +64,7 @@
     cell.backgroundColor = [UIColor redColor];
     
     [self.formedWord appendString:cell.letterLabel.text];
-    [self.wordFormationIndexPaths addObject:self.indexPathForLastCellTouched];
+    [self.wordFormationPath addObject:@(self.indexPathForLastCellTouched.row)];
 }
 
 -(void)touchEnded
@@ -70,7 +72,7 @@
     [self.collectionView reloadData];
     NSLog(@"%@", self.formedWord);
     self.formedWord = nil;
-    self.wordFormationIndexPaths = nil;
+    self.wordFormationPath = nil;
 }
 
 
@@ -113,10 +115,10 @@
 
 # pragma mark - Lazy load variables
 
--(NSMutableArray *)wordFormationIndexPaths
+-(NSMutableArray *)wordFormationPath
 {
-    if (_wordFormationIndexPaths == nil) _wordFormationIndexPaths = [NSMutableArray array];
-    return _wordFormationIndexPaths;
+    if (_wordFormationPath == nil) _wordFormationPath = [NSMutableArray array];
+    return _wordFormationPath;
 }
 
 -(NSMutableString *)formedWord
