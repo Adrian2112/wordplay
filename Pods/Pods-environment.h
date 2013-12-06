@@ -6,6 +6,12 @@
 // project.
 
 
+// CHDataStructures
+#define COCOAPODS_POD_AVAILABLE_CHDataStructures
+#define COCOAPODS_VERSION_MAJOR_CHDataStructures 0
+#define COCOAPODS_VERSION_MINOR_CHDataStructures 0
+#define COCOAPODS_VERSION_PATCH_CHDataStructures 1
+
 // DWTagList
 #define COCOAPODS_POD_AVAILABLE_DWTagList
 #define COCOAPODS_VERSION_MAJOR_DWTagList 0

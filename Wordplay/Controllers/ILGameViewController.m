@@ -11,12 +11,13 @@
 #import "ILGame.h"
 #import "ILWord.h"
 #import <DWTagList/DWTagList.h>
+#import <CHDataStructures/CHOrderedDictionary.h>
 
 @interface ILGameViewController () <ILGameDelegate>
 @property (strong, nonatomic) ILBoardViewController *boardViewController;
 @property (weak, nonatomic) IBOutlet UIView *boardCollectionControllerContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
-@property (strong, nonatomic) NSMutableDictionary *wordList;
+@property (strong, nonatomic) CHOrderedDictionary *wordList;
 @property (strong, nonatomic) DWTagList *wordListView;
 
 @property (strong, nonatomic) ILGame *game;
@@ -113,9 +114,9 @@
 }
 
 #pragma mark - variables lazy load
--(NSMutableDictionary *)wordList
+-(CHOrderedDictionary *)wordList
 {
-    if (_wordList == nil) _wordList = [NSMutableDictionary dictionary];
+    if (_wordList == nil) _wordList = [CHOrderedDictionary dictionary];
     return _wordList;
 }
 
