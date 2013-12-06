@@ -1,10 +1,13 @@
 PODS:
+  - DWTagList (0.0.4)
   - Firebase (1.0.9)
 
 DEPENDENCIES:
+  - DWTagList
   - Firebase (~> 1.0.0)
 
 SPEC CHECKSUMS:
+  DWTagList: 8e85f16af6b068f8c4d77aba7696206a33adc8e2
   Firebase: f88860bb05fde375a236bab7182ecc4e02fe5c93
 
 COCOAPODS: 0.28.0
