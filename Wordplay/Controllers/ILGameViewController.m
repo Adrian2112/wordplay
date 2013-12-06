@@ -12,7 +12,7 @@
 #import "ILWord.h"
 #import <DWTagList/DWTagList.h>
 
-@interface ILGameViewController ()
+@interface ILGameViewController () <ILGameDelegate>
 @property (strong, nonatomic) ILBoardViewController *boardViewController;
 @property (weak, nonatomic) IBOutlet UIView *boardCollectionControllerContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
@@ -41,7 +41,7 @@
     
     self.wordListView.automaticResize = YES;
     
-    self.game = [[ILGame alloc] init];
+    self.game = [[ILGame alloc] initWithDelegate:self];
 }
 
 #pragma mark - Handle touches on board
@@ -62,10 +62,7 @@
     
     self.wordList[word.wordId] = word;
     
-    [self.wordListView setTags:self.wordsStringArray];
-    [self.wordListView setNeedsDisplay];
-    
-    [self scrollWordsViewToBottom];
+    [self updateWordListView];
 }
 
 -(NSArray *)getLetterMatrix
@@ -94,9 +91,25 @@
     for (NSString *wordId in self.wordList) {
         ILWord *word = self.wordList[wordId];
         
-        [wordList addObject:word.word];
+        [wordList addObject:word.stringToDisplay];
     }
     return [wordList copy];
+}
+
+-(void)updateWordListView
+{
+    [self.wordListView setTags:self.wordsStringArray];
+    
+    [self scrollWordsViewToBottom];
+}
+
+#pragma mark - ILGameDelegate
+
+-(void)game:(ILGame *)game receivedWord:(ILWord *)word
+{
+    self.wordList[word.wordId] = word;
+    
+    [self updateWordListView];
 }
 
 #pragma mark - variables lazy load

@@ -7,15 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ILFirebaseModel.h"
+#import <Firebase/Firebase.h>
 
 @class ILGame;
 
-@interface ILWord : ILFirebaseModel
+@interface ILWord : NSObject
 
 @property (strong, nonatomic) NSString *wordId;
 @property (strong, nonatomic) NSString *word;
+@property (strong, nonatomic) NSNumber *score;
 
++(instancetype)wordFromSnapshot:(FDataSnapshot *)snapshot;
 -(instancetype)initWithWord:(NSString *)word forGame:(ILGame *)game;
+
+-(NSString *)stringToDisplay;
 
 @end

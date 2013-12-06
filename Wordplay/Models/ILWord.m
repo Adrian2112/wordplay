@@ -7,24 +7,47 @@
 //
 
 #import "ILWord.h"
-#import <Firebase/Firebase.h>
+#import "ILFirebase.h"
 #import "ILGame.h"
+#import <Firebase/Firebase.h>
 
 @implementation ILWord
 
++(instancetype)wordFromSnapshot:(FDataSnapshot *)snapshot
+{
+    ILWord *word = [[ILWord alloc] init];
+    
+    word.wordId = snapshot.name;
+    word.word = snapshot.value[@"word"];
+    word.score = snapshot.value[@"score"];
+    
+    return word;
+}
+
 -(instancetype)initWithWord:(NSString *)word forGame:(ILGame *)game
 {
-    Firebase *wordReference = [game.wordsReference childByAutoId];
-    self = [super initWithFirebaseReference:wordReference];
+    self = [super init];
     if (self == nil) {
         return nil;
     }
     
-    self.wordId = wordReference.name;
+    Firebase *scoringListReference = [[ILFirebase scoringList] childByAutoId];
+    
+    self.wordId = scoringListReference.name;
     self.word = word;
     
-    [self.modelReference setValue:@{@"game": game.name, @"word": self.word}];
+    [scoringListReference setValue:@{@"game": game.name, @"word": self.word}];
     
     return self;
 }
+
+-(NSString *)stringToDisplay
+{
+    if (self.score) {
+        return [NSString stringWithFormat:@"%@  %@", self.score, self.word];
+    }
+    
+    return self.word;
+}
+
 @end

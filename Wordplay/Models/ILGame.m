@@ -12,11 +12,14 @@
 
 @interface ILGame ()
 
+// the word reference to listen for new words
+@property (strong, nonatomic) Firebase *wordsReference;
+
 @end
 
 @implementation ILGame
 
--(id)init
+-(instancetype)initWithDelegate:(id<ILGameDelegate>)delegate
 {
     self = [super initWithFirebaseReference:[ILFirebase newGame]];
     
@@ -28,6 +31,9 @@
     
     self.name = self.modelReference.name;
     
+    self.delegate = delegate;
+    [self listenForWords];
+    
     return self;
 }
 
@@ -38,8 +44,12 @@
 
 -(void)listenForWords
 {
+    if (self.delegate == nil) return;
+    
     [self.wordsReference observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-        
+        NSLog(@"word received %@", snapshot);
+        ILWord *word = [ILWord wordFromSnapshot:snapshot];
+        [self.delegate game:self receivedWord:word];
     }];
 }
 
