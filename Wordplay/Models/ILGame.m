@@ -12,8 +12,6 @@
 
 @interface ILGame ()
 
-@property (strong, nonatomic) Firebase *modelReference;
-
 @end
 
 @implementation ILGame
@@ -26,17 +24,23 @@
         return nil;
     }
     
-    self.modelReference = [ILFirebase newGame];
+    self.wordsReference = [self.modelReference childByAppendingPath:@"words"];
     
     self.name = self.modelReference.name;
     
     return self;
 }
 
--(void)addNewWord:(NSString *)word
+-(ILWord *)addNewWord:(NSString *)word
 {
-    Firebase *newRecord = [[ILFirebase scoringList] childByAutoId];
-    [newRecord setValue:@{@"game": self.name, @"word": word}];
+    return [[ILWord alloc] initWithWord:word forGame:self];
+}
+
+-(void)listenForWords
+{
+    [self.wordsReference observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        
+    }];
 }
 
 @end

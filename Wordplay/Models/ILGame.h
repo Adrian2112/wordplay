@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "ILFirebaseModel.h"
+#import "ILWord.h"
 
 @interface ILGame : ILFirebaseModel
 
+@property (strong, nonatomic) Firebase *wordsReference;
 @property (strong, nonatomic) NSString *name;
 
--(void)addNewWord:(NSString *)word;
+-(ILWord *)addNewWord:(NSString *)word;
 
 @end

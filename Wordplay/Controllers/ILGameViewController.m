@@ -9,13 +9,14 @@
 #import "ILGameViewController.h"
 #import "ILBoardViewController.h"
 #import "ILGame.h"
+#import "ILWord.h"
 #import <DWTagList/DWTagList.h>
 
 @interface ILGameViewController ()
 @property (strong, nonatomic) ILBoardViewController *boardViewController;
 @property (weak, nonatomic) IBOutlet UIView *boardCollectionControllerContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
-@property (strong, nonatomic) NSMutableArray *wordList;
+@property (strong, nonatomic) NSMutableDictionary *wordList;
 @property (strong, nonatomic) DWTagList *wordListView;
 
 @property (strong, nonatomic) ILGame *game;
@@ -54,14 +55,15 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSString *word = [self.boardViewController touchEndedWithWord];
-    if ([word compare:@""] == NSOrderedSame) return;
+    NSString *formedWord = [self.boardViewController touchEndedWithWord];
+    if ([formedWord compare:@""] == NSOrderedSame) return;
     
-    [self.wordList addObject:word];
-    [self.wordListView setTags:[self.wordList copy]];
+    ILWord *word = [self.game addNewWord:formedWord];
+    
+    self.wordList[word.wordId] = word;
+    
+    [self.wordListView setTags:self.wordsStringArray];
     [self.wordListView setNeedsDisplay];
-    
-    [self.game addNewWord:word];
     
     [self scrollWordsViewToBottom];
 }
@@ -83,14 +85,24 @@
     
     self.wordListContainer.contentSize = self.wordListView.contentSize;
     
-    NSLog(@"%@ %@ %@", NSStringFromCGSize(self.wordListView.contentSize), NSStringFromCGPoint(bottomOffset), NSStringFromCGSize(self.wordListContainer.frame.size));
     [self.wordListContainer setContentOffset:bottomOffset animated:YES];
 }
 
-#pragma mark - variables lazy load
--(NSMutableArray *)wordList
+-(NSArray *)wordsStringArray
 {
-    if (_wordList == nil) _wordList = [NSMutableArray array];
+    NSMutableArray *wordList = [NSMutableArray array];
+    for (NSString *wordId in self.wordList) {
+        ILWord *word = self.wordList[wordId];
+        
+        [wordList addObject:word.word];
+    }
+    return [wordList copy];
+}
+
+#pragma mark - variables lazy load
+-(NSMutableDictionary *)wordList
+{
+    if (_wordList == nil) _wordList = [NSMutableDictionary dictionary];
     return _wordList;
 }
 

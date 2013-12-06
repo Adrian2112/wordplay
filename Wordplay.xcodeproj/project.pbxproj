@@ -16,6 +16,7 @@
 		3A1DEB321851A2AA000AA63E /* ILAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F45185022C600258EF1 /* ILAppDelegate.m */; };
 		3A1DEB331851A2AA000AA63E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F41185022C600258EF1 /* main.m */; };
 		3A9FCA631851A3C000CFA64C /* ILGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FCA621851A3C000CFA64C /* ILGame.m */; };
+		3A9FCA661851A75200CFA64C /* ILWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FCA651851A75200CFA64C /* ILWord.m */; };
 		3ACA4F36185022C600258EF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F35185022C600258EF1 /* Foundation.framework */; };
 		3ACA4F38185022C600258EF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F37185022C600258EF1 /* CoreGraphics.framework */; };
 		3ACA4F3A185022C600258EF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F39185022C600258EF1 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		3A1DEB2318519E33000AA63E /* ILFirebaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILFirebaseModel.m; sourceTree = "<group>"; };
 		3A9FCA611851A3C000CFA64C /* ILGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILGame.h; sourceTree = "<group>"; };
 		3A9FCA621851A3C000CFA64C /* ILGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILGame.m; sourceTree = "<group>"; };
+		3A9FCA641851A75200CFA64C /* ILWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILWord.h; sourceTree = "<group>"; };
+		3A9FCA651851A75200CFA64C /* ILWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILWord.m; sourceTree = "<group>"; };
 		3ACA4F32185022C600258EF1 /* Wordplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACA4F35185022C600258EF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3ACA4F37185022C600258EF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,8 @@
 				3A1DEB2318519E33000AA63E /* ILFirebaseModel.m */,
 				3A9FCA611851A3C000CFA64C /* ILGame.h */,
 				3A9FCA621851A3C000CFA64C /* ILGame.m */,
+				3A9FCA641851A75200CFA64C /* ILWord.h */,
+				3A9FCA651851A75200CFA64C /* ILWord.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1DEB261851A2AA000AA63E /* ILFirebase.m in Sources */,
+				3A9FCA661851A75200CFA64C /* ILWord.m in Sources */,
 				3A1DEB2A1851A2AA000AA63E /* ILFirebaseModel.m in Sources */,
 				3A1DEB2C1851A2AA000AA63E /* ILLetterCell.m in Sources */,
 				3A1DEB2E1851A2AA000AA63E /* ILBoardViewController.m in Sources */,
