@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		2AD4329760944BB690661334 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B21F6C9FDC02451BAD35B774 /* libPods.a */; };
+		3A1DEB261851A2AA000AA63E /* ILFirebase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DEB1D18519BAE000AA63E /* ILFirebase.m */; };
+		3A1DEB2A1851A2AA000AA63E /* ILFirebaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DEB2318519E33000AA63E /* ILFirebaseModel.m */; };
+		3A1DEB2C1851A2AA000AA63E /* ILLetterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F8C1850568F00258EF1 /* ILLetterCell.m */; };
+		3A1DEB2E1851A2AA000AA63E /* ILBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F841850568700258EF1 /* ILBoardViewController.m */; };
+		3A1DEB301851A2AA000AA63E /* ILGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F861850568700258EF1 /* ILGameViewController.m */; };
+		3A1DEB321851A2AA000AA63E /* ILAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F45185022C600258EF1 /* ILAppDelegate.m */; };
+		3A1DEB331851A2AA000AA63E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F41185022C600258EF1 /* main.m */; };
+		3A9FCA631851A3C000CFA64C /* ILGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FCA621851A3C000CFA64C /* ILGame.m */; };
 		3ACA4F36185022C600258EF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F35185022C600258EF1 /* Foundation.framework */; };
 		3ACA4F38185022C600258EF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F37185022C600258EF1 /* CoreGraphics.framework */; };
 		3ACA4F3A185022C600258EF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F39185022C600258EF1 /* UIKit.framework */; };
 		3ACA4F40185022C600258EF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F3E185022C600258EF1 /* InfoPlist.strings */; };
-		3ACA4F42185022C600258EF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F41185022C600258EF1 /* main.m */; };
-		3ACA4F46185022C600258EF1 /* ILAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F45185022C600258EF1 /* ILAppDelegate.m */; };
 		3ACA4F48185022C600258EF1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F47185022C600258EF1 /* Images.xcassets */; };
 		3ACA4F4F185022C600258EF1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F4E185022C600258EF1 /* XCTest.framework */; };
 		3ACA4F50185022C600258EF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F35185022C600258EF1 /* Foundation.framework */; };
@@ -25,10 +31,7 @@
 		3ACA4F6E185025E000258EF1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F6D185025E000258EF1 /* CFNetwork.framework */; };
 		3ACA4F70185025E600258EF1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F6F185025E600258EF1 /* Security.framework */; };
 		3ACA4F72185025EF00258EF1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F71185025EF00258EF1 /* SystemConfiguration.framework */; };
-		3ACA4F881850568700258EF1 /* ILBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F841850568700258EF1 /* ILBoardViewController.m */; };
-		3ACA4F891850568700258EF1 /* ILGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F861850568700258EF1 /* ILGameViewController.m */; };
 		3ACA4F8A1850568700258EF1 /* ILGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F871850568700258EF1 /* ILGameViewController.xib */; };
-		3ACA4F8D1850568F00258EF1 /* ILLetterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F8C1850568F00258EF1 /* ILLetterCell.m */; };
 		3ACA4F8F185056A100258EF1 /* ILLetterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACA4F8E185056A100258EF1 /* ILLetterCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A1DEB1C18519BAE000AA63E /* ILFirebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILFirebase.h; sourceTree = "<group>"; };
+		3A1DEB1D18519BAE000AA63E /* ILFirebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILFirebase.m; sourceTree = "<group>"; };
+		3A1DEB2218519E33000AA63E /* ILFirebaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILFirebaseModel.h; sourceTree = "<group>"; };
+		3A1DEB2318519E33000AA63E /* ILFirebaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILFirebaseModel.m; sourceTree = "<group>"; };
+		3A9FCA611851A3C000CFA64C /* ILGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILGame.h; sourceTree = "<group>"; };
+		3A9FCA621851A3C000CFA64C /* ILGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILGame.m; sourceTree = "<group>"; };
 		3ACA4F32185022C600258EF1 /* Wordplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACA4F35185022C600258EF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3ACA4F37185022C600258EF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,6 +115,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1DEB1818519B80000AA63E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A1DEB1C18519BAE000AA63E /* ILFirebase.h */,
+				3A1DEB1D18519BAE000AA63E /* ILFirebase.m */,
+				3A1DEB2218519E33000AA63E /* ILFirebaseModel.h */,
+				3A1DEB2318519E33000AA63E /* ILFirebaseModel.m */,
+				3A9FCA611851A3C000CFA64C /* ILGame.h */,
+				3A9FCA621851A3C000CFA64C /* ILGame.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3ACA4F29185022C600258EF1 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +168,7 @@
 		3ACA4F3B185022C600258EF1 /* Wordplay */ = {
 			isa = PBXGroup;
 			children = (
+				3A1DEB1818519B80000AA63E /* Models */,
 				3ACA4F771850563300258EF1 /* Views */,
 				3ACA4F731850493B00258EF1 /* Controllers */,
 				3ACA4F44185022C600258EF1 /* ILAppDelegate.h */,
@@ -340,11 +363,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ACA4F42185022C600258EF1 /* main.m in Sources */,
-				3ACA4F46185022C600258EF1 /* ILAppDelegate.m in Sources */,
-				3ACA4F8D1850568F00258EF1 /* ILLetterCell.m in Sources */,
-				3ACA4F881850568700258EF1 /* ILBoardViewController.m in Sources */,
-				3ACA4F891850568700258EF1 /* ILGameViewController.m in Sources */,
+				3A1DEB261851A2AA000AA63E /* ILFirebase.m in Sources */,
+				3A1DEB2A1851A2AA000AA63E /* ILFirebaseModel.m in Sources */,
+				3A1DEB2C1851A2AA000AA63E /* ILLetterCell.m in Sources */,
+				3A1DEB2E1851A2AA000AA63E /* ILBoardViewController.m in Sources */,
+				3A1DEB301851A2AA000AA63E /* ILGameViewController.m in Sources */,
+				3A1DEB321851A2AA000AA63E /* ILAppDelegate.m in Sources */,
+				3A9FCA631851A3C000CFA64C /* ILGame.m in Sources */,
+				3A1DEB331851A2AA000AA63E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

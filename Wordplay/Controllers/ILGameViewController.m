@@ -8,6 +8,7 @@
 
 #import "ILGameViewController.h"
 #import "ILBoardViewController.h"
+#import "ILGame.h"
 #import <DWTagList/DWTagList.h>
 
 @interface ILGameViewController ()
@@ -16,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
 @property (strong, nonatomic) NSMutableArray *wordList;
 @property (strong, nonatomic) DWTagList *wordListView;
+
+@property (strong, nonatomic) ILGame *game;
 
 @end
 
@@ -36,6 +39,8 @@
     [self.wordListContainer addSubview:self.wordListView];
     
     self.wordListView.automaticResize = YES;
+    
+    self.game = [[ILGame alloc] init];
 }
 
 #pragma mark - Handle touches on board
@@ -55,6 +60,8 @@
     [self.wordList addObject:word];
     [self.wordListView setTags:[self.wordList copy]];
     [self.wordListView setNeedsDisplay];
+    
+    [self.game addNewWord:word];
     
     [self scrollWordsViewToBottom];
 }
