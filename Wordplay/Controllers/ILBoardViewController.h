@@ -13,5 +13,5 @@
 -(instancetype)initWithLetterMatrix:(NSArray *)letterMatrix;
 
 -(void)touchedAtPoint:(CGPoint)point;
--(void)touchEnded;
+-(NSString *)touchEndedWithWord;
 @end

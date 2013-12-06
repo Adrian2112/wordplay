@@ -67,19 +67,21 @@
     [self.wordFormationPath addObject:@(self.indexPathForLastCellTouched.row)];
     
     if (![self isValidPath:self.wordFormationPath]) {
-        [self touchEnded];
+        [self touchEndedWithWord];
         return;
     }
     
     [self colorPath:self.wordFormationPath];
 }
 
--(void)touchEnded
+-(NSString *)touchEndedWithWord
 {
     [self.collectionView reloadData];
-    NSLog(@"%@", self.formedWord);
+    NSString *word = self.formedWord;
     self.formedWord = nil;
     self.wordFormationPath = nil;
+    
+    return word;
 }
 
 -(BOOL)isValidPath:(NSArray *)path
