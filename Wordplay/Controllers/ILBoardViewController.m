@@ -49,10 +49,21 @@
 -(void)touchedAtPoint:(CGPoint)point
 {
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
-    // do nothing if index path is the same as last cell touched
-    // or index path is nil
-    // or the wordFormationIndexPath already include the index path
-    if ([indexPath isEqual:self.indexPathForLastCellTouched]
+    
+    UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath];
+    CGRect cellRect = attributes.frame;
+    
+    CGSize itemSize = [ILBoardViewController collectionViewFlowLayout].itemSize;
+    
+    CGRect acceptableFrame = CGRectInset(cellRect, itemSize.width*0.1, itemSize.height*0.1);
+    
+    // do nothing if:
+    // the touched point is not inside the approved rect for the cell or
+    // index path is the same as last cell touched or
+    // index path is nil or
+    // the wordFormationIndexPath already include the index path
+    if (!CGRectContainsPoint(acceptableFrame, point)
+        || [indexPath isEqual:self.indexPathForLastCellTouched]
         || indexPath == nil
         || [self.wordFormationPath containsObject:@(indexPath.row)])
     {
