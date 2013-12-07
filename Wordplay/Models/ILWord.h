@@ -20,6 +20,6 @@
 +(instancetype)wordFromSnapshot:(FDataSnapshot *)snapshot;
 -(instancetype)initWithWord:(NSString *)word forGame:(ILGame *)game;
 
--(NSString *)stringToDisplay;
+-(NSAttributedString *)attributedStringToDisplay;
 
 @end

@@ -41,13 +41,19 @@
     return self;
 }
 
--(NSString *)stringToDisplay
+-(NSAttributedString *)attributedStringToDisplay
 {
     if (self.score) {
-        return [NSString stringWithFormat:@"%@  %@", self.score, self.word];
+        NSString *string = [NSString stringWithFormat:@"%@  %@", self.score, self.word];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+        if ([self.score isEqual:@(0)]) {
+            [attributedString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, string.length)];
+        }
+        
+        return [attributedString copy];
     }
     
-    return self.word;
+    return [[NSAttributedString alloc] initWithString:self.word];
 }
 
 @end

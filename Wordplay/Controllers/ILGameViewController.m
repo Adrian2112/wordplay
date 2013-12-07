@@ -40,6 +40,7 @@
     [self.boardCollectionControllerContainer addSubview:self.boardViewController.collectionView];
     
     self.wordListView = [[DWTagList alloc] initWithFrame:self.wordListContainer.bounds];
+    [self.wordListView setTextShadowOffset:CGSizeZero];
     [self.wordListContainer addSubview:self.wordListView];
     
     self.wordListView.automaticResize = YES;
@@ -82,7 +83,7 @@
     for (NSString *wordId in self.wordList) {
         ILWord *word = self.wordList[wordId];
         
-        [wordList addObject:word.stringToDisplay];
+        [wordList addObject:word.attributedStringToDisplay];
     }
     return [wordList copy];
 }
