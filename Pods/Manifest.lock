@@ -5,8 +5,12 @@ PODS:
 
 DEPENDENCIES:
   - CHDataStructures
-  - DWTagList
+  - DWTagList (from `https://github.com/Adrian2112/DWTagList.git`)
   - Firebase (~> 1.0.0)
+
+EXTERNAL SOURCES:
+  DWTagList:
+    :git: https://github.com/Adrian2112/DWTagList.git
 
 SPEC CHECKSUMS:
   CHDataStructures: 6d1a20884af7b54605f0a8bc0b51d15abec64eb2
