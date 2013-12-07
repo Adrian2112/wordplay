@@ -42,9 +42,13 @@
     
     self.wordListView = [[DWTagList alloc] initWithFrame:self.wordListContainer.bounds];
     [self.wordListView setTextShadowOffset:CGSizeZero];
+    [self.wordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    
     [self.wordListContainer addSubview:self.wordListView];
     
     self.wordListView.automaticResize = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 #pragma mark - Handle touches on board
@@ -116,6 +120,12 @@
 {
     if (_wordList == nil) _wordList = [CHOrderedDictionary dictionary];
     return _wordList;
+}
+
+#pragma mark - preferred font size changed
+- (void)preferredContentSizeChanged:(NSNotification *)aNotification {
+    [self.wordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [self.wordListView display];
 }
 
 @end
