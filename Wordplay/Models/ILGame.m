@@ -49,7 +49,6 @@
     if (self.delegate == nil) return;
     
     [self.wordsReference observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"word received %@", snapshot);
         ILWord *word = [ILWord wordFromSnapshot:snapshot];
         [self.delegate game:self receivedWord:word];
     }];
