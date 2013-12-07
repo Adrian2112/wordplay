@@ -33,6 +33,8 @@
     
     self.name = self.modelReference.name;
     
+    self.userId = [NSString stringWithFormat:@"%d", arc4random()];
+    
     self.delegate = delegate;
     [self listenForWords];
     

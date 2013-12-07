@@ -20,6 +20,7 @@
     word.wordId = snapshot.name;
     word.word = snapshot.value[@"word"];
     word.score = snapshot.value[@"score"];
+    word.userId = snapshot.value[@"user_id"];
     
     return word;
 }
@@ -36,7 +37,7 @@
     self.wordId = scoringListReference.name;
     self.word = word;
     
-    [scoringListReference setValue:@{@"game": game.name, @"word": self.word}];
+    [scoringListReference setValue:@{@"game": game.name, @"word": self.word, @"user_id": game.userId}];
     
     return self;
 }

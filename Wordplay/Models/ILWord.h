@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSString *wordId;
 @property (strong, nonatomic) NSString *word;
 @property (strong, nonatomic) NSNumber *score;
+@property (strong, nonatomic) NSString *userId;
 
 +(instancetype)wordFromSnapshot:(FDataSnapshot *)snapshot;
 -(instancetype)initWithWord:(NSString *)word forGame:(ILGame *)game;
