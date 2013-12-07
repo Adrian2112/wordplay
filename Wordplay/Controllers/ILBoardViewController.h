@@ -10,7 +10,7 @@
 
 @interface ILBoardViewController : UICollectionViewController
 
--(instancetype)initWithLetterMatrix:(NSArray *)letterMatrix;
+-(instancetype)initWithBoardLetters:(NSArray *)boardLetters;
 
 -(void)touchedAtPoint:(CGPoint)point;
 -(NSString *)touchEndedWithWord;

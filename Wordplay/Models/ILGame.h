@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) id <ILGameDelegate> delegate;
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSArray *boardLetters;
 
 -(instancetype)initWithDelegate:(id<ILGameDelegate>)delegate;
 

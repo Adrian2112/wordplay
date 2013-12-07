@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSMutableArray *wordFormationPath;
 @property (strong, nonatomic) NSIndexPath *indexPathForLastCellTouched;
-@property (strong, nonatomic) NSArray *letterMatrix;
+@property (strong, nonatomic) NSArray *boardLetters;
 @property (strong, nonatomic) NSMutableString *formedWord;
 
 @property (strong, nonatomic) NSArray *adjacencies;
@@ -24,14 +24,14 @@
 
 @implementation ILBoardViewController
 
--(id)initWithLetterMatrix:(NSArray *)letterMatrix
+-(instancetype)initWithBoardLetters:(NSArray *)boardLetters
 {
     self = [super initWithCollectionViewLayout:[ILBoardViewController collectionViewFlowLayout]];
     if (self == nil) {
         return nil;
     }
     
-    self.letterMatrix = letterMatrix;
+    self.boardLetters = boardLetters;
     self.collectionView.userInteractionEnabled = NO;
     return self;
 }
@@ -140,10 +140,7 @@
     ILLetterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLetterCellReuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     
-    NSInteger letterMatrixRow = indexPath.row % 4;
-    NSInteger letterMatrixColumn = indexPath.row / 4;
-    
-    NSString *letter = self.letterMatrix[letterMatrixColumn][letterMatrixRow];
+    NSString *letter = self.boardLetters[indexPath.row];
     
     cell.letterLabel.text = letter;
     

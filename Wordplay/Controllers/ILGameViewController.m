@@ -30,9 +30,11 @@
 {
     [super viewDidLoad];
     
+    self.game = [[ILGame alloc] initWithDelegate:self];
+    
     self.boardCollectionControllerContainer.layer.masksToBounds = YES;
     
-    self.boardViewController = [[ILBoardViewController alloc] initWithLetterMatrix:[self getLetterMatrix]];
+    self.boardViewController = [[ILBoardViewController alloc] initWithBoardLetters:self.game.boardLetters];
     [self addChildViewController:self.boardViewController];
     
     [self.boardCollectionControllerContainer addSubview:self.boardViewController.collectionView];
@@ -41,8 +43,6 @@
     [self.wordListContainer addSubview:self.wordListView];
     
     self.wordListView.automaticResize = YES;
-    
-    self.game = [[ILGame alloc] initWithDelegate:self];
 }
 
 #pragma mark - Handle touches on board
@@ -64,16 +64,6 @@
     self.wordList[word.wordId] = word;
     
     [self updateWordListView];
-}
-
--(NSArray *)getLetterMatrix
-{
-    return @[
-             @[@"V", @"T", @"R", @"S"],
-             @[@"R", @"Y", @"B", @"W"],
-             @[@"W", @"E", @"O", @"A"],
-             @[@"I", @"Z", @"H", @"U"],
-             ];
 }
 
 -(void)scrollWordsViewToBottom
