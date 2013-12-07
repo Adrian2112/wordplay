@@ -19,7 +19,7 @@
 
 @implementation ILGame
 
--(instancetype)initWithDelegate:(id<ILGameDelegate>)delegate
+-(instancetype)init
 {
     self = [super initWithFirebaseReference:[ILFirebase newGame]];
     
@@ -35,10 +35,13 @@
     
     self.userId = [NSString stringWithFormat:@"%d", arc4random()];
     
-    self.delegate = delegate;
-    [self listenForWords];
-    
     return self;
+}
+
+-(void)setDelegate:(id<ILGameDelegate>)delegate
+{
+    _delegate = delegate;
+    [self listenForWords];
 }
 
 -(ILWord *)addNewWord:(NSString *)word

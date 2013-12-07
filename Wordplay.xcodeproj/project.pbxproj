@@ -15,6 +15,8 @@
 		3A1DEB301851A2AA000AA63E /* ILGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F861850568700258EF1 /* ILGameViewController.m */; };
 		3A1DEB321851A2AA000AA63E /* ILAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F45185022C600258EF1 /* ILAppDelegate.m */; };
 		3A1DEB331851A2AA000AA63E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4F41185022C600258EF1 /* main.m */; };
+		3A548E041853CCC400A8472B /* ILSelectGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A548E021853CCC400A8472B /* ILSelectGameViewController.m */; };
+		3A548E051853CCC400A8472B /* ILSelectGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A548E031853CCC400A8472B /* ILSelectGameViewController.xib */; };
 		3A9FCA631851A3C000CFA64C /* ILGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FCA621851A3C000CFA64C /* ILGame.m */; };
 		3A9FCA661851A75200CFA64C /* ILWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FCA651851A75200CFA64C /* ILWord.m */; };
 		3ACA4F36185022C600258EF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACA4F35185022C600258EF1 /* Foundation.framework */; };
@@ -51,6 +53,9 @@
 		3A1DEB1D18519BAE000AA63E /* ILFirebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILFirebase.m; sourceTree = "<group>"; };
 		3A1DEB2218519E33000AA63E /* ILFirebaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILFirebaseModel.h; sourceTree = "<group>"; };
 		3A1DEB2318519E33000AA63E /* ILFirebaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILFirebaseModel.m; sourceTree = "<group>"; };
+		3A548E011853CCC400A8472B /* ILSelectGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILSelectGameViewController.h; sourceTree = "<group>"; };
+		3A548E021853CCC400A8472B /* ILSelectGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILSelectGameViewController.m; sourceTree = "<group>"; };
+		3A548E031853CCC400A8472B /* ILSelectGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ILSelectGameViewController.xib; sourceTree = "<group>"; };
 		3A9FCA611851A3C000CFA64C /* ILGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILGame.h; sourceTree = "<group>"; };
 		3A9FCA621851A3C000CFA64C /* ILGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILGame.m; sourceTree = "<group>"; };
 		3A9FCA641851A75200CFA64C /* ILWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILWord.h; sourceTree = "<group>"; };
@@ -221,6 +226,9 @@
 				3ACA4F851850568700258EF1 /* ILGameViewController.h */,
 				3ACA4F861850568700258EF1 /* ILGameViewController.m */,
 				3ACA4F871850568700258EF1 /* ILGameViewController.xib */,
+				3A548E011853CCC400A8472B /* ILSelectGameViewController.h */,
+				3A548E021853CCC400A8472B /* ILSelectGameViewController.m */,
+				3A548E031853CCC400A8472B /* ILSelectGameViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ACA4F40185022C600258EF1 /* InfoPlist.strings in Resources */,
+				3A548E051853CCC400A8472B /* ILSelectGameViewController.xib in Resources */,
 				3ACA4F48185022C600258EF1 /* Images.xcassets in Resources */,
 				3ACA4F8F185056A100258EF1 /* ILLetterCell.xib in Resources */,
 				3ACA4F8A1850568700258EF1 /* ILGameViewController.xib in Resources */,
@@ -377,6 +386,7 @@
 				3A1DEB321851A2AA000AA63E /* ILAppDelegate.m in Sources */,
 				3A9FCA631851A3C000CFA64C /* ILGame.m in Sources */,
 				3A1DEB331851A2AA000AA63E /* main.m in Sources */,
+				3A548E041853CCC400A8472B /* ILSelectGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 #import "ILAppDelegate.h"
-#import "ILGameViewController.h"
+#import "ILSelectGameViewController.h"
 
 @implementation ILAppDelegate
 
@@ -18,8 +18,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    ILGameViewController *gameVC = [[ILGameViewController alloc] init];
-    self.window.rootViewController = gameVC;
+    ILSelectGameViewController *selectGameVC = [[ILSelectGameViewController alloc] init];
+    self.window.rootViewController = selectGameVC;
     
     return YES;
 }

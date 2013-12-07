@@ -19,8 +19,6 @@
 @property (strong, nonatomic) NSArray *boardLetters;
 @property (strong, nonatomic) NSString *userId;
 
--(instancetype)initWithDelegate:(id<ILGameDelegate>)delegate;
-
 -(ILWord *)addNewWord:(NSString *)word;
 
 @end

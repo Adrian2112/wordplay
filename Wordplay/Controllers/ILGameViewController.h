@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ILGame.h"
 
-@interface ILGameViewController : UIViewController
+@interface ILGameViewController : UIViewController <ILGameDelegate>
+
+-(instancetype)initWithGame:(ILGame *)game;
 
 @end

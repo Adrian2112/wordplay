@@ -13,7 +13,7 @@
 #import <DWTagList/DWTagList.h>
 #import <CHDataStructures/CHOrderedDictionary.h>
 
-@interface ILGameViewController () <ILGameDelegate, ILBoardViewDelegate>
+@interface ILGameViewController () <ILBoardViewDelegate>
 @property (strong, nonatomic) ILBoardViewController *boardViewController;
 @property (weak, nonatomic) IBOutlet UIView *boardCollectionControllerContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
@@ -26,11 +26,20 @@
 
 @implementation ILGameViewController
 
+-(instancetype)initWithGame:(ILGame *)game
+{
+    if ((self = [super init]) == nil) {
+        return nil;
+    }
+    
+    self.game = game;
+    
+    return self;
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.game = [[ILGame alloc] initWithDelegate:self];
     
     self.boardCollectionControllerContainer.layer.masksToBounds = YES;
     
@@ -120,6 +129,15 @@
 {
     if (_wordList == nil) _wordList = [CHOrderedDictionary dictionary];
     return _wordList;
+}
+
+-(ILGame *)game{
+    if (_game == nil) {
+        _game = [[ILGame alloc] init];
+        _game.delegate = self;
+    }
+    
+    return _game;
 }
 
 #pragma mark - preferred font size changed
