@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ILBoardViewDelegate;
+
 @interface ILBoardViewController : UICollectionViewController
+
+@property (strong, nonatomic) id<ILBoardViewDelegate> delegate;
 
 -(instancetype)initWithBoardLetters:(NSArray *)boardLetters;
 
 -(void)touchedAtPoint:(CGPoint)point;
--(NSString *)touchEndedWithWord;
+-(void)touchEnded;
+@end
+
+@protocol ILBoardViewDelegate <NSObject>
+
+@required
+-(void)boardView:(ILBoardViewController *)boardView formedWord:(NSString *)formedWord;
+
 @end

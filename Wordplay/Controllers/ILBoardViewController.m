@@ -63,25 +63,30 @@
     
     ILLetterCell *cell = (ILLetterCell *)[self.collectionView cellForItemAtIndexPath:self.indexPathForLastCellTouched];
     
-    [self.formedWord appendString:cell.letterLabel.text];
     [self.wordFormationPath addObject:@(self.indexPathForLastCellTouched.row)];
     
     if (![self isValidPath:self.wordFormationPath]) {
-        [self touchEndedWithWord];
+        [self touchEnded];
         return;
     }
+    
+    [self.formedWord appendString:cell.letterLabel.text];
+    
     
     [self colorPath:self.wordFormationPath];
 }
 
--(NSString *)touchEndedWithWord
+-(void)touchEnded
 {
     [self.collectionView reloadData];
     NSString *word = self.formedWord;
     self.formedWord = nil;
     self.wordFormationPath = nil;
     
-    return word;
+    if (self.delegate) {
+        [self.delegate boardView:self formedWord:word];
+    }
+
 }
 
 -(BOOL)isValidPath:(NSArray *)path

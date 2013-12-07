@@ -13,7 +13,7 @@
 #import <DWTagList/DWTagList.h>
 #import <CHDataStructures/CHOrderedDictionary.h>
 
-@interface ILGameViewController () <ILGameDelegate>
+@interface ILGameViewController () <ILGameDelegate, ILBoardViewDelegate>
 @property (strong, nonatomic) ILBoardViewController *boardViewController;
 @property (weak, nonatomic) IBOutlet UIView *boardCollectionControllerContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
@@ -35,6 +35,7 @@
     self.boardCollectionControllerContainer.layer.masksToBounds = YES;
     
     self.boardViewController = [[ILBoardViewController alloc] initWithBoardLetters:self.game.boardLetters];
+    self.boardViewController.delegate = self;
     [self addChildViewController:self.boardViewController];
     
     [self.boardCollectionControllerContainer addSubview:self.boardViewController.collectionView];
@@ -57,14 +58,7 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSString *formedWord = [self.boardViewController touchEndedWithWord];
-    if ([formedWord compare:@""] == NSOrderedSame) return;
-    
-    ILWord *word = [self.game addNewWord:formedWord];
-    
-    self.wordList[word.wordId] = word;
-    
-    [self updateWordListView];
+    [self.boardViewController touchEnded];
 }
 
 -(void)scrollWordsViewToBottom
@@ -93,6 +87,19 @@
     [self.wordListView setTags:self.wordsStringArray];
     
     [self scrollWordsViewToBottom];
+}
+
+#pragma mark - ILBoardViewDelegate
+
+-(void)boardView:(ILBoardViewController *)boardView formedWord:(NSString *)formedWord
+{
+    if ([formedWord compare:@""] == NSOrderedSame) return;
+    
+    ILWord *word = [self.game addNewWord:formedWord];
+    
+    self.wordList[word.wordId] = word;
+    
+    [self updateWordListView];
 }
 
 #pragma mark - ILGameDelegate
