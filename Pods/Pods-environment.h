@@ -24,3 +24,9 @@
 #define COCOAPODS_VERSION_MINOR_Firebase 0
 #define COCOAPODS_VERSION_PATCH_Firebase 9
 
+// TPKeyboardAvoiding
+#define COCOAPODS_POD_AVAILABLE_TPKeyboardAvoiding
+#define COCOAPODS_VERSION_MAJOR_TPKeyboardAvoiding 1
+#define COCOAPODS_VERSION_MINOR_TPKeyboardAvoiding 2
+#define COCOAPODS_VERSION_PATCH_TPKeyboardAvoiding 1
+
