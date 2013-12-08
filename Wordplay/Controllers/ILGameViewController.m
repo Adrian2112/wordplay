@@ -70,6 +70,13 @@
     self.opponentUserWordListView.automaticResize = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadBoardLetters:) name:@"boardLettersLoadedFromServer" object:nil];
+}
+
+
+-(void)reloadBoardLetters:(NSNotification *)notification
+{
+    self.boardViewController.boardLetters = self.game.boardLetters;
 }
 
 #pragma mark - Handle touches on board
@@ -175,6 +182,11 @@
 -(BOOL)isWordFromCurrentUser:(ILWord *)word
 {
     return [word.userId compare:self.game.userId] == NSOrderedSame;
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

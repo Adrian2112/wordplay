@@ -15,7 +15,6 @@
 
 @property (strong, nonatomic) NSMutableArray *wordFormationPath;
 @property (strong, nonatomic) NSIndexPath *indexPathForLastCellTouched;
-@property (strong, nonatomic) NSArray *boardLetters;
 @property (strong, nonatomic) NSMutableString *formedWord;
 
 @property (strong, nonatomic) NSArray *adjacencies;
@@ -41,7 +40,6 @@
     [super viewDidLoad];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ILLetterCell" bundle:Nil] forCellWithReuseIdentifier:kLetterCellReuseIdentifier];
-    
 }
 
 #pragma mark - Handle touches
@@ -202,6 +200,12 @@
     }
     
     return _adjacencies;
+}
+
+-(void)setBoardLetters:(NSArray *)boardLetters
+{
+    _boardLetters = boardLetters;
+    [self.collectionView reloadData];
 }
 
 @end

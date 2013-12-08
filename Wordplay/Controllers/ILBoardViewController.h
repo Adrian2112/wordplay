@@ -13,6 +13,7 @@
 @interface ILBoardViewController : UICollectionViewController
 
 @property (strong, nonatomic) id<ILBoardViewDelegate> delegate;
+@property (strong, nonatomic) NSArray *boardLetters;
 
 -(instancetype)initWithBoardLetters:(NSArray *)boardLetters;
 

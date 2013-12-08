@@ -41,6 +41,8 @@
         return nil;
     }
     
+    self.boardLetters = [self generateBoardLetters];
+    [self.modelReference setValue:@{@"board_letters": self.boardLetters}];
     [self initialize];
     
     return self;
@@ -49,8 +51,6 @@
 -(void)initialize
 {
     self.wordsReference = [self.modelReference childByAppendingPath:@"words"];
-    
-    self.boardLetters = [self generateBoardLetters];
     
     self.name = self.modelReference.name;
     
@@ -99,6 +99,25 @@
     }
     
     return [board copy];
+}
+
+-(NSArray *)boardLetters
+{
+    if (_boardLetters == nil){
+        [self getBoardLettersFromServer];
+        return nil;
+    }
+    return _boardLetters;
+}
+
+-(void)getBoardLettersFromServer
+{
+    [self.modelReference observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        self.boardLetters = snapshot.value[@"board_letters"];
+        NSLog(@"letters received %@", self.boardLetters);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"boardLettersLoadedFromServer" object:self];
+
+    }];
 }
 
 @end
