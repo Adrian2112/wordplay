@@ -16,9 +16,12 @@
 @interface ILGameViewController () <ILBoardViewDelegate>
 @property (strong, nonatomic) ILBoardViewController *boardViewController;
 @property (weak, nonatomic) IBOutlet UIView *boardCollectionControllerContainer;
-@property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
-@property (strong, nonatomic) CHOrderedDictionary *wordList;
-@property (strong, nonatomic) DWTagList *wordListView;
+@property (weak, nonatomic) IBOutlet UIScrollView *currentUserWordListContainer;
+@property (weak, nonatomic) IBOutlet UIScrollView *opponentUserWordListContainer;
+@property (strong, nonatomic) DWTagList *currentUserWordListView;
+@property (strong, nonatomic) DWTagList *opponentUserWordListView;
+@property (strong, nonatomic) CHOrderedDictionary *currentUserWordListDictionary;
+@property (strong, nonatomic) NSMutableArray *opponentWordList;
 @property (weak, nonatomic) IBOutlet UILabel *gameNameLabel;
 
 @property (strong, nonatomic) ILGame *game;
@@ -52,13 +55,19 @@
     
     [self.boardCollectionControllerContainer addSubview:self.boardViewController.collectionView];
     
-    self.wordListView = [[DWTagList alloc] initWithFrame:self.wordListContainer.bounds];
-    [self.wordListView setTextShadowOffset:CGSizeZero];
-    [self.wordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    self.currentUserWordListView = [[DWTagList alloc] initWithFrame:self.currentUserWordListContainer.bounds];
+    self.opponentUserWordListView = [[DWTagList alloc] initWithFrame:self.opponentUserWordListContainer.bounds];
     
-    [self.wordListContainer addSubview:self.wordListView];
+    [self.currentUserWordListView setTextShadowOffset:CGSizeZero];
+    [self.currentUserWordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [self.opponentUserWordListView setTextShadowOffset:CGSizeZero];
+    [self.opponentUserWordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
     
-    self.wordListView.automaticResize = YES;
+    [self.currentUserWordListContainer addSubview:self.currentUserWordListView];
+    [self.opponentUserWordListContainer addSubview:self.opponentUserWordListView];
+    
+    self.currentUserWordListView.automaticResize = YES;
+    self.opponentUserWordListView.automaticResize = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
@@ -77,32 +86,32 @@
     [self.boardViewController touchEnded];
 }
 
--(void)scrollWordsViewToBottom
+-(void)scrollWordsViewToBottom:(UIScrollView *)scrollView withWordListView:(DWTagList *)wordListView
 {
-    CGFloat yPosition = self.wordListView.contentSize.height - self.wordListContainer.frame.size.height;
+    CGFloat yPosition = wordListView.contentSize.height - scrollView.frame.size.height;
     CGPoint bottomOffset = CGPointMake(0, yPosition < 0 ? 0 : yPosition);
     
-    self.wordListContainer.contentSize = self.wordListView.contentSize;
+    scrollView.contentSize = wordListView.contentSize;
     
-    [self.wordListContainer setContentOffset:bottomOffset animated:YES];
+    [scrollView setContentOffset:bottomOffset animated:YES];
 }
 
 -(NSArray *)wordsStringArray
 {
     NSMutableArray *wordList = [NSMutableArray array];
-    for (NSString *wordId in self.wordList) {
-        ILWord *word = self.wordList[wordId];
+    for (NSString *wordId in self.currentUserWordListDictionary) {
+        ILWord *word = self.currentUserWordListDictionary[wordId];
         
         [wordList addObject:word.attributedStringToDisplay];
     }
     return [wordList copy];
 }
 
--(void)updateWordListView
+-(void)updateCurrentUserWordListView
 {
-    [self.wordListView setTags:self.wordsStringArray];
+    [self.currentUserWordListView setTags:self.wordsStringArray];
     
-    [self scrollWordsViewToBottom];
+    [self scrollWordsViewToBottom:self.currentUserWordListContainer withWordListView:self.currentUserWordListView];
 }
 
 #pragma mark - ILBoardViewDelegate
@@ -113,25 +122,31 @@
     
     ILWord *word = [self.game addNewWord:formedWord];
     
-    self.wordList[word.wordId] = word;
+    self.currentUserWordListDictionary[word.wordId] = word;
     
-    [self updateWordListView];
+    [self updateCurrentUserWordListView];
 }
 
 #pragma mark - ILGameDelegate
 
 -(void)game:(ILGame *)game receivedWord:(ILWord *)word
 {
-    self.wordList[word.wordId] = word;
-    
-    [self updateWordListView];
+    NSLog(@"received word %@", word.word);
+    if ([self isWordFromCurrentUser:word]) {
+        self.currentUserWordListDictionary[word.wordId] = word;
+        [self updateCurrentUserWordListView];
+    } else {
+        [self.opponentWordList addObject:word.attributedStringToDisplay];
+        [self.opponentUserWordListView setTags:self.opponentWordList];
+        [self scrollWordsViewToBottom:self.opponentUserWordListContainer withWordListView:self.opponentUserWordListView];
+    }
 }
 
 #pragma mark - variables lazy load
--(CHOrderedDictionary *)wordList
+-(CHOrderedDictionary *)currentUserWordListDictionary
 {
-    if (_wordList == nil) _wordList = [CHOrderedDictionary dictionary];
-    return _wordList;
+    if (_currentUserWordListDictionary == nil) _currentUserWordListDictionary = [CHOrderedDictionary dictionary];
+    return _currentUserWordListDictionary;
 }
 
 -(ILGame *)game{
@@ -143,10 +158,23 @@
     return _game;
 }
 
+-(NSMutableArray *)opponentWordList
+{
+    if (_opponentWordList == nil) _opponentWordList = [NSMutableArray array];
+    return _opponentWordList;
+}
+
 #pragma mark - preferred font size changed
 - (void)preferredContentSizeChanged:(NSNotification *)aNotification {
-    [self.wordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    [self.wordListView display];
+    [self.currentUserWordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [self.currentUserWordListView display];
+    [self.opponentUserWordListView setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [self.opponentUserWordListView display];
+}
+
+-(BOOL)isWordFromCurrentUser:(ILWord *)word
+{
+    return [word.userId compare:self.game.userId] == NSOrderedSame;
 }
 
 @end
