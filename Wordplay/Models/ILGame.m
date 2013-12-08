@@ -19,6 +19,20 @@
 
 @implementation ILGame
 
+-(id)initWithName:(NSString *)name
+{
+    self = [super initWithFirebaseReference:[ILFirebase newGameWithName:name]];
+    
+    if (self == nil) {
+        return nil;
+    }
+    
+    [self initialize];
+    
+    return self;
+    
+}
+
 -(instancetype)init
 {
     self = [super initWithFirebaseReference:[ILFirebase newGame]];
@@ -27,6 +41,13 @@
         return nil;
     }
     
+    [self initialize];
+    
+    return self;
+}
+
+-(void)initialize
+{
     self.wordsReference = [self.modelReference childByAppendingPath:@"words"];
     
     self.boardLetters = [self generateBoardLetters];
@@ -34,8 +55,6 @@
     self.name = self.modelReference.name;
     
     self.userId = [NSString stringWithFormat:@"%d", arc4random()];
-    
-    return self;
 }
 
 -(void)setDelegate:(id<ILGameDelegate>)delegate

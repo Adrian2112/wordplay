@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSArray *boardLetters;
 @property (strong, nonatomic) NSString *userId;
 
+-(id)initWithName:(NSString *)name;
+
 -(ILWord *)addNewWord:(NSString *)word;
 
 @end

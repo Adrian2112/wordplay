@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *wordListContainer;
 @property (strong, nonatomic) CHOrderedDictionary *wordList;
 @property (strong, nonatomic) DWTagList *wordListView;
+@property (weak, nonatomic) IBOutlet UILabel *gameNameLabel;
 
 @property (strong, nonatomic) ILGame *game;
 
@@ -40,6 +41,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.gameNameLabel.text = self.game.name;
     
     self.boardCollectionControllerContainer.layer.masksToBounds = YES;
     

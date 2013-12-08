@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ILGameViewController">
             <connections>
                 <outlet property="boardCollectionControllerContainer" destination="fca-7P-mX1" id="kyN-t7-mno"/>
+                <outlet property="gameNameLabel" destination="Q9D-0O-Gqs" id="Iz2-xy-cdO"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="wordListContainer" destination="hQM-Dl-ooj" id="yME-ON-5Yx"/>
             </connections>
@@ -16,17 +17,37 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fca-7P-mX1" userLabel="board controller">
-                    <rect key="frame" x="0.0" y="119" width="320" height="320"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fca-7P-mX1" userLabel="board controller">
+                    <rect key="frame" x="0.0" y="124" width="320" height="320"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="320" id="1L1-lA-9BQ"/>
+                        <constraint firstAttribute="width" constant="320" id="zVy-Nc-nXq"/>
+                    </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQM-Dl-ooj">
-                    <rect key="frame" x="20" y="20" width="280" height="91"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQM-Dl-ooj">
+                    <rect key="frame" x="0.0" y="41" width="320" height="83"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </scrollView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9D-0O-Gqs">
+                    <rect key="frame" x="113" y="20" width="94" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.0024416334309999999" green="1" blue="0.10958674660000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="fca-7P-mX1" firstAttribute="top" secondItem="hQM-Dl-ooj" secondAttribute="bottom" id="1UB-sS-J88"/>
+                <constraint firstAttribute="centerX" secondItem="Q9D-0O-Gqs" secondAttribute="centerX" id="7PJ-CZ-Dtd"/>
+                <constraint firstItem="hQM-Dl-ooj" firstAttribute="top" secondItem="Q9D-0O-Gqs" secondAttribute="bottom" id="9H3-eP-AoV"/>
+                <constraint firstItem="Q9D-0O-Gqs" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="Syd-lX-ZSr"/>
+                <constraint firstAttribute="trailing" secondItem="hQM-Dl-ooj" secondAttribute="trailing" id="VDM-D8-4fY"/>
+                <constraint firstAttribute="centerY" secondItem="fca-7P-mX1" secondAttribute="centerY" id="gUZ-9E-IKA"/>
+                <constraint firstAttribute="centerX" secondItem="fca-7P-mX1" secondAttribute="centerX" id="wQU-of-raW"/>
+                <constraint firstItem="hQM-Dl-ooj" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="yog-70-You"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

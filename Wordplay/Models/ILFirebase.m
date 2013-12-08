@@ -47,5 +47,10 @@ static NSString * const kFirebaseURLString = @"https://wordplay.firebaseIO.com";
     return [[self games] childByAutoId];
 }
 
++(Firebase *)newGameWithName:(NSString *)name
+{
+    return [[self games] childByAppendingPath:name];
+}
+
 
 @end

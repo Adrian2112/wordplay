@@ -19,8 +19,20 @@
 
 - (IBAction)playButtonClicked:(id)sender
 {
-    ILGameViewController *gameVC = [[ILGameViewController alloc] init];
+    ILGame *game = [[ILGame alloc] initWithName:self.gameNameLabel.text];
+    [self presentGameControllerWithGame:game];
+}
+
+- (IBAction)newGame:(id)sender
+{
     ILGame *game = [[ILGame alloc] init];
+    [self presentGameControllerWithGame:game];
+}
+
+-(void)presentGameControllerWithGame:(ILGame *)game
+{
+    ILGameViewController *gameVC = [[ILGameViewController alloc] initWithGame:game];
+    
     game.delegate = gameVC;
     
     [self presentViewController:gameVC animated:YES completion:nil];

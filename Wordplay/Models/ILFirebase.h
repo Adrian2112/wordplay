@@ -15,5 +15,6 @@
 +(Firebase *)games;
 +(Firebase *)scoringList;
 +(Firebase *)newGame;
++(Firebase *)newGameWithName:(NSString *)name;
 
 @end
